@@ -1,0 +1,115 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Tugas Salwa Sayyidati Azkia: Enam Opsi Bangun Datar");
+        
+
+        // Meminta input nama lengkap dan NIM
+        Console.Write("Masukkan Nama Lengkap: ");
+        string nama = Console.ReadLine();
+        Console.Write("Masukkan NIM: ");
+        string nim = Console.ReadLine();
+
+        Console.WriteLine(); // Baris kosong
+
+        Console.WriteLine("Pilih bangun datar:");
+        Console.WriteLine("1. Persegi");
+        Console.WriteLine("2. Persegi Panjang");
+        Console.WriteLine("3. Segitiga");
+        Console.WriteLine("4. Lingkaran");
+        Console.WriteLine("5. Jajar Genjang");
+        Console.WriteLine("6. Layang-layang");
+        Console.Write("Masukkan pilihan (1-6): ");
+
+        int pilihan = int.Parse(Console.ReadLine());
+
+        switch (pilihan)
+        {
+            case 1: // Persegi
+                HitungPersegi();
+                break;
+            case 2: // Persegi Panjang
+                HitungPersegiPanjang();
+                break;
+            case 3: // Segitiga
+                HitungSegitiga();
+                break;
+            case 4: // Lingkaran
+                HitungLingkaran();
+                break;
+            case 5: // Jajar Genjang
+                HitungJajarGenjang();
+                break;
+            case 6: // Layang-layang
+                HitungLayangLayang();
+                break;
+            default:
+                Console.WriteLine("Pilihan tidak valid.");
+                break;
+        }
+    }
+
+    static void HitungPersegi()
+    {
+        Console.Write("Masukkan panjang sisi: ");
+        double sisi = double.Parse(Console.ReadLine());
+        Console.WriteLine($"Luas persegi: {sisi * sisi}");
+        Console.WriteLine($"Keliling persegi: {4 * sisi}");
+    }
+
+    static void HitungPersegiPanjang()
+    {
+        Console.Write("Masukkan panjang: ");
+        double panjang = double.Parse(Console.ReadLine());
+        Console.Write("Masukkan lebar: ");
+        double lebar = double.Parse(Console.ReadLine());
+        Console.WriteLine($"Luas persegi panjang: {panjang * lebar}");
+        Console.WriteLine($"Keliling persegi panjang: {2 * (panjang + lebar)}");
+    }
+
+    static void HitungSegitiga()
+    {
+        Console.Write("Masukkan alas: ");
+        double alas = double.Parse(Console.ReadLine());
+        Console.Write("Masukkan tinggi: ");
+        double tinggi = double.Parse(Console.ReadLine());
+        Console.Write("Masukkan sisi miring: ");
+        double sisiMiring = double.Parse(Console.ReadLine());
+        double keliling = alas + (2 * sisiMiring);
+        Console.WriteLine($"Luas segitiga: {0.5 * alas * tinggi}");
+        Console.WriteLine($"Keliling segitiga: {keliling}");
+    }
+
+    static void HitungLingkaran()
+    {
+        Console.Write("Masukkan jari-jari lingkaran: ");
+        double jariJari = double.Parse(Console.ReadLine());
+        double luas = Math.PI * jariJari * jariJari;
+        Console.WriteLine($"Luas lingkaran: {luas}");
+        Console.WriteLine($"Keliling lingkaran: {2 * Math.PI * jariJari}");
+    }
+
+    static void HitungJajarGenjang()
+    {
+        Console.Write("Masukkan panjang alas: ");
+        double alas = double.Parse(Console.ReadLine());
+        Console.Write("Masukkan tinggi: ");
+        double tinggi = double.Parse(Console.ReadLine());
+        Console.WriteLine($"Luas jajar genjang: {alas * tinggi}");
+        Console.WriteLine($"Keliling jajar genjang: {2 * (alas + tinggi)}");
+    }
+
+    static void HitungLayangLayang()
+    {
+        Console.Write("Masukkan diagonal 1: ");
+        double diagonal1 = double.Parse(Console.ReadLine());
+        Console.Write("Masukkan diagonal 2: ");
+        double diagonal2 = double.Parse(Console.ReadLine());
+        double luas = 0.5 * diagonal1 * diagonal2;
+        Console.WriteLine($"Luas layang-layang: {luas}");
+        Console.WriteLine($"Keliling layang-layang: {2 * (Math.Sqrt(Math.Pow(diagonal1 / 2, 2) + Math.Pow(diagonal2 / 2, 2)))}");
+    }
+}
