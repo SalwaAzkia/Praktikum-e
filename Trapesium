@@ -1,0 +1,38 @@
+\\tugas pertama yang aku kerjakan pada kelas praktikum di semester 2
+
+
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("##  Program C# Menghitung Luas dan Keliling Trapesium  ##");
+        Console.WriteLine("==========================================================");
+        Console.WriteLine();
+
+        string nama, nim;
+        float sisi_atas, sisi_bawah, tinggi, luas, keliling;
+
+        Console.Write("Masukkan nama: ");
+        nama = Console.ReadLine();
+        Console.Write("Masukkan NIM: ");
+        nim = Console.ReadLine();
+
+        Console.Write("Input panjang sisi sejajar atas: ");
+        sisi_atas = float.Parse(Console.ReadLine());
+        Console.Write("Input panjang sisi sejajar bawah: ");
+        sisi_bawah = float.Parse(Console.ReadLine());
+        Console.Write("Input tinggi trapesium: ");
+        tinggi = float.Parse(Console.ReadLine());
+
+        luas = 0.5f * (sisi_atas + sisi_bawah) * tinggi;
+        keliling = sisi_atas + sisi_bawah + (2 * (float)Math.Sqrt(((sisi_bawah - sisi_atas) / 2) * ((sisi_bawah - sisi_atas) / 2) + tinggi * tinggi));
+
+        Console.WriteLine("Nama: " + nama);
+        Console.WriteLine("NIM: " + nim);
+        Console.WriteLine("Luas trapesium = " + luas);
+        Console.WriteLine("Keliling trapesium = " + keliling);
+    }
+}
+
