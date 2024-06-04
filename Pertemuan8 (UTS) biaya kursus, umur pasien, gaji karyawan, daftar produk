@@ -1,0 +1,211 @@
+                                                                                    Nomor 1 (Python)
+Code:
+def main():
+    # Meminta input nama dan NIM
+    nama = input("Masukkan nama Anda: ")
+    nim = input("Masukkan NIM Anda: ")
+    # Meminta input nilai
+    nilai_java = float(input("Masukkan nilai ujian Java: "))
+    nilai_c = float(input("Masukkan nilai ujian Bahasa C: "))
+    nilai_pascal = float(input("Masukkan nilai ujian Pascal: "))
+    # Menghitung nilai akhir
+    nilai_akhir = (nilai_java + nilai_c + nilai_pascal) / 3
+    # Menentukan grade
+    if nilai_akhir >= 91:
+        grade = "A"
+    elif nilai_akhir >= 76:
+        grade = "B"
+    elif nilai_akhir >= 60:
+        grade = "C"
+    elif nilai_akhir >= 40:
+        grade = "D"
+    else:
+        grade = "E"
+    biaya_kursus = 0
+    if grade == "A":
+        biaya_kursus = 50000
+    elif grade == "B":
+        biaya_kursus = 150000
+    elif grade == "C":
+        biaya_kursus = 250000
+    elif grade == "D":
+        biaya_kursus = 350000
+    else:
+        biaya_kursus = 450000
+    print("\nData Mahasiswa:")
+    print(f"Nama: {nama}")
+    print(f"NIM: {nim}")
+    print("\nHasil Evaluasi:")
+    print(f"Nilai Akhir: {nilai_akhir:.2f}")
+    print(f"Grade: {grade}")
+    print(f"Biaya Kursus: Rp. {biaya_kursus:,}")
+if __name__ == "__main__":
+    main()
+
+                                                                                    Nomor 2 (C#)
+Code:
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Masukkan umur pasien:");
+        int umur = Convert.ToInt32(Console.ReadLine());
+
+        string kategoriUsia = TentukanKategoriUsia(umur);
+        Console.WriteLine($"umur {umur} tahun adalah pasien {kategoriUsia}.");
+    }
+
+    static string TentukanKategoriUsia(int umur) =>
+        umur switch
+        {
+            int u when u >= 0 && u <= 5 => "Balita",
+            int u when u >= 6 && u <= 12 => "Anak-anak",
+            int u when u >= 13 && u <= 18 => "Remaja",
+            int u when u >= 19 && u <= 59 => "Dewasa",
+            _ => "Lansia"
+        };
+}
+
+                                                                                    Nomor 3 (Golang)
+Code:
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+type Karyawan struct {
+	Nama     string
+	Golongan string
+}
+
+type Jabatan struct {
+	Nama      string
+	GajiPokok int
+	Tunjangan float64
+}
+
+var daftarJabatan = map[string]Jabatan{
+	"A": {"Direktur", 9000000, 0.1},
+	"B": {"Manager", 7000000, 0.05},
+	"C": {"Karyawan", 4500000, 0.03},
+	"D": {"OB", 2000000, 0.01},
+}
+
+func hitungGaji(karyawan Karyawan, jabatan Jabatan) (ppn, gajiBersih float64) {
+	ppn = float64(jabatan.GajiPokok) * 0.1
+	gajiBersih = float64(jabatan.GajiPokok) + jabatan.Tunjangan - ppn
+	return ppn, gajiBersih
+}
+
+func main() {
+	for {
+		var karyawan Karyawan
+		fmt.Println("Nama Karyawan:")
+		fmt.Scanln(&karyawan.Nama)
+		fmt.Println("Golongan Karyawan:")
+		fmt.Scanln(&karyawan.Golongan)
+
+		jabatan, ok := daftarJabatan[strings.ToUpper(karyawan.Golongan)]
+		if !ok {
+			fmt.Println("Golongan tidak valid.")
+			continue
+		}
+
+		ppn, gajiBersih := hitungGaji(karyawan, jabatan)
+
+		fmt.Printf("Nama: %s\nGolongan: %s\nJabatan: %s\nGaji Pokok: %d\nTunjangan: %.2f\nPPN: %.2f\nGaji Bersih: %.2f\n",
+			karyawan.Nama, karyawan.Golongan, jabatan.Nama, jabatan.GajiPokok, jabatan.Tunjangan, ppn, gajiBersih)
+
+		fmt.Println("\nMau hitung lagi? kalau mau ketik y kalau ngga ketik n? (y/n)")
+		var lanjut string
+		fmt.Scanln(&lanjut)
+		if strings.ToLower(lanjut) != "y" {
+			break
+		}
+	}
+}
+
+                                                                                    Nomor 5 (Java)
+Code:
+class Produk:
+    def __init__(self, nama, harga, stok):
+        self.nama = nama
+        self.harga = harga
+        self.stok = stok
+
+class TokoElektronik:
+    def __init__(self):
+        self.daftar_produk = []
+
+    def tambah_produk(self, nama, harga, stok):
+        produk_baru = Produk(nama, harga, stok)
+        self.daftar_produk.append(produk_baru)
+        print(f"Produk {nama} berhasil ditambahkan.")
+
+    def tampilkan_daftar_produk(self):
+        if not self.daftar_produk:
+            print("Tidak ada produk yang tersedia.")
+        else:
+            print("Daftar Produk:")
+            for index, produk in enumerate(self.daftar_produk, start=1):
+                print(f"{index}. {produk.nama}, Harga: {produk.harga}, Stok: {produk.stok}")
+
+    def update_produk(self, nama, harga_baru, stok_baru):
+        for produk in self.daftar_produk:
+            if produk.nama == nama:
+                produk.harga = harga_baru
+                produk.stok = stok_baru
+                print(f"Data produk {nama} berhasil diupdate.")
+                return
+        print("Produk tidak ditemukan.")
+
+    def hapus_produk(self, nama):
+        for produk in self.daftar_produk:
+            if produk.nama == nama:
+                self.daftar_produk.remove(produk)
+                print(f"Produk {nama} berhasil dihapus.")
+                return
+        print("Produk tidak ditemukan.")
+
+def menu():
+    print("\nPilih Menu:")
+    print("1. Tambah Produk")
+    print("2. Tampilkan Daftar Produk")
+    print("3. Update Data Produk")
+    print("4. Hapus Produk")
+    print("5. Keluar")
+
+def main():
+    toko = TokoElektronik()
+
+    while True:
+        menu()
+        pilihan = input("Masukkan pilihan: ")
+
+        if pilihan == "1":
+            nama = input("Masukkan nama produk: ")
+            harga = float(input("Masukkan harga produk: "))
+            stok = int(input("Masukkan jumlah stok produk: "))
+            toko.tambah_produk(nama, harga, stok)
+        elif pilihan == "2":
+            toko.tampilkan_daftar_produk()
+        elif pilihan == "3":
+            nama = input("Masukkan nama produk yang ingin diupdate: ")
+            harga_baru = float(input("Masukkan harga baru produk: "))
+            stok_baru = int(input("Masukkan stok baru produk: "))
+            toko.update_produk(nama, harga_baru, stok_baru)
+        elif pilihan == "4":
+            nama = input("Masukkan nama produk yang ingin dihapus: ")
+            toko.hapus_produk(nama)
+        elif pilihan == "5":
+            print("Terima kasih telah menggunakan aplikasi!")
+            break
+        else:
+            print("Pilihan tidak valid, silakan coba lagi.")
+
+if __name__ == "__main__":
+    main()
