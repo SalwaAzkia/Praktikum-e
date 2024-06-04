@@ -1,0 +1,30 @@
+Tugas Terstruktur:
+buatkan sebuah program yang meminta pengguna untuk memasukkan 5 angka bulat, 
+menyimpannya dalam sebuah array, dan menampilkan angka terbesar dan terkecil dari array tersebut. 
+Sertakan nama dan NIM!
+
+using System;
+using System.Linq;
+
+class OddNumbersSalwa
+{
+    public static void Main(string[] args)
+    {
+        //Bagian Nama aku
+        string nama = "Salwa Sayyidati Azkia";
+        string nim = "1237050005";
+        Console.WriteLine($"Nama: {nama}");
+        Console.WriteLine($"NIM: {nim}");
+
+        //Bagian Inisialisasi Array
+        int[] numbers = { 1, 2, 3, 4, 5 };
+
+        int min = numbers.Min();
+        int max = numbers.Max();
+
+        Console.WriteLine($"Angka terbesar: {max}");
+        Console.WriteLine($"Angka terkecil: {min}");
+
+           
+        }
+}
