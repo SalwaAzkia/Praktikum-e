@@ -1,0 +1,120 @@
+Tugas Mandiri:
+Buatlah sebuah program yang meminta pengguna memasukkan sebuah angka bulan (1-12). 
+Program ini akan menentukan nama bulan, jumlah hari dalam bulan tersebut, dan apakah bulan tersebut merupakan bulan ganjil atau genap. 
+Sertakan nama dan NIM dalam kode program.
+
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+
+        string monthName;
+        Console.WriteLine("Nama-nama Bulan");
+        Console.WriteLine("");
+
+        Console.Write("Masukkan Nama Lengkap: ");
+        string nama = Console.ReadLine();
+        Console.Write("Masukkan NIM: ");
+        string nim = Console.ReadLine();
+        Console.Write("Enter the month number (1-12): ");
+        int monthNumber = Convert.ToInt32(Console.ReadLine());
+
+        switch (monthNumber)
+        {
+            case 1:
+                monthName = "January";
+                break;
+            case 2:
+                monthName = "February";
+                break;
+            case 3:
+                monthName = "March";
+                break;
+            case 4:
+                monthName = "April";
+                break;
+            case 5:
+                monthName = "May";
+                break;
+            case 6:
+                monthName = "June";
+                break;
+            case 7:
+                monthName = "July";
+                break;
+            case 8:
+                monthName = "August";
+                break;
+            case 9:
+                monthName = "September";
+                break;
+            case 10:
+                monthName = "October";
+                break;
+            case 11:
+                monthName = "November";
+                break;
+            case 12:
+                monthName = "December";
+                break;
+            default:
+                monthName = "Invalid month number";
+                break;
+        }
+
+        Console.WriteLine("month name: " + monthName);
+
+    }
+}
+
+
+Tugas Terstruktur:
+Buatlah sebuah program yang meminta pengguna memasukkan sebuah angka bulan (1-12). 
+Program ini akan menentukan nama bulan, jumlah hari dalam bulan tersebut, dan apakah bulan tersebut merupakan bulan ganjil atau genap. 
+Sertakan nama dan NIM dalam kode program.
+
+using System;
+class Program
+{
+    static void Main(string[] args)
+    {
+        string monthName;
+        Console.WriteLine("Nama-nama Bulan");
+        Console.WriteLine("");
+        Console.Write("Masukkan Nama Lengkap: ");
+        string nama = Console.ReadLine();
+        Console.Write("Masukkan NIM: ");
+        string nim = Console.ReadLine();
+        Console.Write("Enter the month number (1-12): ");
+        int monthNumber = Convert.ToInt32(Console.ReadLine());
+        if (monthNumber == 1)
+            monthName = "January";
+        else if (monthNumber == 2)
+            monthName = "February";
+        else if (monthNumber == 3)
+            monthName = "March";
+        else if (monthNumber == 4)
+            monthName = "April";
+        else if (monthNumber == 5)
+            monthName = "May";
+        else if (monthNumber == 6)
+            monthName = "June";
+        else if (monthNumber == 7)
+            monthName = "July";
+        else if (monthNumber == 8)
+            monthName = "August";
+        else if (monthNumber == 9)
+            monthName = "September";
+        else if (monthNumber == 10)
+            monthName = "October";
+        else if (monthNumber == 11)
+            monthName = "November";
+        else if (monthNumber == 12)
+            monthName = "December";
+        else
+            monthName = "Invalid month number";
+        Console.WriteLine("month name: " + monthName);
+    }
+}
