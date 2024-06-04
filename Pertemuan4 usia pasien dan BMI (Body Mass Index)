@@ -1,0 +1,82 @@
+Tugas Mandiri:
+Buatlah sebuah program sederhana yang meminta pengguna untuk memasukkan nama dan umur mereka. 
+Program kemudian akan menampilkan pesan sapaan sesuai dengan umur pengguna. 
+   Jika pengguna berusia di bawah 18 tahun, pesan sapaannya adalah "Halo [nama], kamu masih anak-anak!". 
+   Jika pengguna berusia antara 18 dan 65 tahun, pesan sapaannya adalah "Halo [nama], selamat datang!". 
+   Jika pengguna berusia di atas 65 tahun, pesan sapaannya adalah "Halo [nama], semoga hari-harimu menyenangkan!". 
+Cantumkan nama dan NIM di atas program.
+
+using System;
+class Holaa
+{
+    static void Main(string[] args)
+    {
+
+        Console.Write("Masukkan Nama Lengkap: ");
+        string nama = Console.ReadLine();
+        Console.Write("Masukkan NIM: ");
+        string nim = Console.ReadLine();
+
+        Console.Write("masukkan nama Anda: ");
+        string nama1 = Console.ReadLine();
+
+        Console.Write("masukkan umur Anda: ");
+        int umur = Convert.ToInt32(Console.ReadLine());
+
+        if (umur < 18)
+        {
+            Console.WriteLine($"Halo {nama1}, kamu masih anak-anak!");
+        }
+        else if (umur >= 18 && umur <= 65)
+        {
+            Console.WriteLine($"Halo {nama1}, selamat datang!");
+        }
+        else
+        {
+            Console.WriteLine($"Halo {nama1}, semoga hari-harimu menyenangkan!");
+        }
+
+        Console.ReadLine();
+    }
+}
+
+Tugas Terstruktur:
+Buatlah program sederhana yang menggunakan fungsi untuk menghitung indeks massa tubuh (BMI) 
+berdasarkan berat dan tinggi yang dimasukkan pengguna. 
+
+Notes: 
+rumus BMI = berat/(tinggi*tinggi)
+Cantumkan Nama dan NIM
+
+using System;
+
+class BodyMassIndex
+
+{
+    static void Main(string[] args)
+    {
+
+        Console.Write("masukkan Nama Lengkap: ");
+      string nama = Console.ReadLine();
+        Console.Write("masukkan NIM: ");
+      string nim = Console.ReadLine();
+
+
+        Console.Write("masukkan berat Anda (kg): ");
+      double berat = Convert.ToDouble(Console.ReadLine());
+
+        Console.Write("masukkan tinggi Anda (meter): ");
+      double tinggi = Convert.ToDouble(Console.ReadLine());
+       double bmi = HitungBMI(berat, tinggi);
+
+        Console.WriteLine($"BMI anda adalah: {bmi}");
+
+        Console.ReadLine();
+    }
+
+    static double HitungBMI(double berat, double tinggi)
+    {
+        return berat / (tinggi * tinggi);
+    }
+
+}
