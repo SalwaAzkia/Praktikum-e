@@ -1,0 +1,161 @@
+Studi kasus
+Buatlah program manajemen jadwal kerja karyawan menggunakan konsep 
+"List of Lists" dalam C#. Program ini harus mampu menyimpan dan menampilkan jadwal kerja untuk setiap hari dalam seminggu. 
+Setiap hari dapat memiliki beberapa shift kerja dengan informasi nama karyawan dan jam kerja. 
+Pengguna harus dapat menambahkan jadwal kerja untuk hari tertentu, menghapus shift kerja tertentu dari hari tertentu, 
+dan menampilkan jadwal lengkap untuk seluruh minggu.
+
+Persyaratan:
+Program harus menyimpan jadwal kerja dalam bentuk List of Lists.
+Setiap elemen dalam daftar utama (List) mewakili satu hari dalam seminggu.
+Setiap hari memiliki List yang berisi shift kerja.
+Setiap shift kerja diwakili oleh kelas yang memiliki nama karyawan dan jam kerja.
+Program harus memiliki menu untuk menambahkan, menghapus, dan menampilkan jadwal kerja.
+
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    class JadwalShift
+    {
+        public string NamaKaryawan { get; set; }
+        public string JamKerja { get; set; }
+    }
+
+    static void Main(string[] args)
+    {
+        List<List<ShiftKerja>> jadwalKerja = new List<List<ShiftKerja>>();
+        for (int i = 0; i < 7; i++)
+        {
+            jadwalKerja.Add(new List<ShiftKerja>());
+        }
+
+        while (true)
+        {
+            Console.WriteLine("\nMenu:");
+            Console.WriteLine("1. Tambahkan jadwal shift");
+            Console.WriteLine("2. Hapus jadwal shift");
+            Console.WriteLine("3. Daftar Jadwal shift");
+            Console.WriteLine("4. Type this number for Surprise!");
+            Console.WriteLine("5. Exit");
+            Console.Write("Silakan pilih menu yang ingin dilihat: ");
+            int menu = Convert.ToInt32(Console.ReadLine());
+
+            switch (menu)
+            {
+                case 1:
+                    TambahJadwalKerja(jadwalKerja);
+                    break;
+                case 2:
+                    HapusJadwalKerja(jadwalKerja);
+                    break;
+                case 3:
+                    TampilkanJadwalKerja(jadwalKerja);
+                    break;
+                case 4:
+                     Surprise();
+                    break;
+                case 5:
+                   Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Menu tidak valid. Silakan pilih menu yang benar.");
+                    break;
+            }
+        }
+    }
+
+    static void TambahJadwalKerja(List<List<ShiftKerja>> jadwal)
+    {
+        Console.WriteLine("\nTambah Jadwal Kerja:");
+        Console.Write("Masukkan hari (ketik 1: untuk Senin, 2: Selasa, 3: Rabu, 4: Kamis, 5: Jum'at, 6: Sabtu dan 7: Minggu): ");
+        int hari = Convert.ToInt32(Console.ReadLine());
+
+        if (hari < 1 || hari > 7)
+        {
+            Console.WriteLine("Tidak ada hari, silakan input data yang valid");
+            return;
+        }
+
+        Console.Write("Nama Karyawan: ");
+        string nama = Console.ReadLine();
+        Console.Write("Jam Kerja: ");
+        string jam = Console.ReadLine();
+
+        jadwal[hari].Add(new ShiftKerja { NamaKaryawan = nama, JamKerja = jam });
+
+        Console.WriteLine("Good job! Jadwal kerja untuk hari ini berhasil ditambahkan.");
+    }
+
+    static void HapusJadwalKerja(List<List<ShiftKerja>> jadwal)
+    {
+        Console.WriteLine("\nHapus Jadwal Kerja:");
+        Console.Write("Masukkan hari (ketik 1: untuk Senin, 2: Selasa, 3: Rabu, 4: Kamis, 5: Jum'at, 6: Sabtu dan 7: Minggu): ");
+        int hari = Convert.ToInt32(Console.ReadLine());
+
+        if (hari < 1 || hari > 7)
+        {
+            Console.WriteLine("Duh, invalid. Masukkan nomor untuk hari yang benar ya!");
+            return;
+        }
+
+        Console.Write("Masukkan karyawan yang akan dihapus jadwal shift nya: ");
+        string nama = Console.ReadLine();
+
+        ShiftKerja shift = jadwal[hari].Find(s => s.NamaKaryawan == nama);
+
+        if (shift != null)
+        {
+            jadwal[hari].Remove(shift);
+            Console.WriteLine("Daftar jam kerja karyawan telah dihapus!");
+        }
+        else
+        {
+            Console.WriteLine("Masukkan data invalid, jadwal kerja tidak dapat ditemukan!");
+        }
+    }
+
+    static void TampilkanJadwalKerja(List<List<ShiftKerja>> jadwal)
+    {
+        string[] namaHari = { "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu" };
+
+        for (int i = 0; i < 7; i++)
+        {
+            Console.WriteLine($"\n{namaHari[i]}:");
+            if (jadwal[i].Count == 0)
+            {
+                Console.WriteLine("Tidak ada jadwal kerja.");
+            }
+            else
+            {
+                foreach (var shift in jadwal[i])
+                {
+                    Console.WriteLine($"- {shift.NamaKaryawan} ({shift.JamKerja})");
+                }
+            }
+        }
+    }
+
+    static void Surprise()
+    {
+        Console.WriteLine("You did a really great job kak Indah, yeay!");
+    }
+}
+
+Tugas Terstruktur:
+Studi Kasus:
+
+Anda diminta untuk membuat program manajemen jadwal kuliah menggunakan konsep "List of Lists" dalam C#. 
+Program ini harus mampu menyimpan dan menampilkan jadwal kuliah untuk setiap hari dalam seminggu. 
+Setiap hari dapat memiliki beberapa mata kuliah dengan informasi nama mata kuliah dan jam kuliah. 
+Pengguna harus dapat menambahkan jadwal kuliah untuk hari tertentu, menghapus mata kuliah tertentu dari hari tertentu, 
+dan menampilkan jadwal lengkap untuk seluruh minggu.
+
+Persyaratan:
+Program harus menyimpan jadwal kuliah dalam bentuk List of Lists.
+Setiap elemen dalam daftar utama (List) mewakili satu hari dalam seminggu.
+Setiap hari memiliki List yang berisi mata kuliah.
+Setiap mata kuliah diwakili oleh kelas yang memiliki nama mata kuliah dan jam kuliah.
+Program harus memiliki menu untuk menambahkan, menghapus, dan menampilkan jadwal kuliah. 
+
