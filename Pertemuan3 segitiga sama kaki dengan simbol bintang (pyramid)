@@ -1,0 +1,83 @@
+Tugas Mandiri:
+Buatlah program C# yang menggunakan perulangan untuk membuat segitiga sama kaki dengan simbol bintang, 
+segitiga siku-siku terbalik yang terdiri dari nomor, dan segitiga siku-siku yang terdiri dari nomor. 
+Dalam program harus mencantumkan nama dan NIM.
+
+using System;
+
+class PyramidSalwa
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Masukkan Nama Lengkap: ");
+        string nama = Console.ReadLine();
+        Console.Write("Masukkan NIM: ");
+        string nim = Console.ReadLine();
+
+       
+        Console.WriteLine("output dari segitiga sama kaki dengan bintang:");
+        int bagiantinggiSegitiga = 5;
+        for (int s = 1; s <= bagiantinggiSegitiga; s++)
+        {
+            for (int a = 1; a <= bagiantinggiSegitiga - s; a++)
+            {
+                Console.Write(" ");
+            }
+            for (int l = 1; l <= 2 * s - 1; l++)
+            {
+                Console.Write("*");
+            }
+            Console.WriteLine();
+        }
+
+     
+        Console.WriteLine("\nsegitiga siku siku dengan angka 6,7,8,9,10:");
+        for (int s = 10; s >= 6; s--)
+        {
+            for (int a = 6; a <= s; a++)
+            {
+                Console.Write(a);
+            }
+            Console.WriteLine();
+        }
+        
+        Console.WriteLine("\nsegitiga siku siku dengan angka 25,26,27,28,29,30:");
+        for (int s = 26; s <= 30; s++)
+        {
+            for (int a = 26; a <= s; a++)
+            {
+                Console.Write(a);
+            }
+            Console.WriteLine();
+        }
+
+        Console.ReadLine(); 
+    }
+}
+
+Tugas Terstruktur:
+Buatlah program C# yang menggunakan perulangan for untuk mencetak angka genap dari 1 hingga 100. 
+Dalam program harus mencantumkan nama dan NIM.
+
+using System;
+
+class ProgramAngkaGenapSalwa
+{
+    static void Main(string[] args)
+    {
+
+        Console.Write("Masukkan Nama Lengkap: ");
+        string nama = Console.ReadLine();
+        Console.Write("Masukkan NIM: ");
+        string nim = Console.ReadLine();
+
+        Console.WriteLine("output angka genap dari 1 hingga 100:");
+        for (int s = 2; s <= 100; s += 2)
+        {
+            Console.WriteLine(s);
+        //s for Salwa
+        }
+
+        Console.ReadLine(); 
+    }
+}
