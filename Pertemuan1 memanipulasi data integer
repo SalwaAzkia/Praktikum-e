@@ -1,0 +1,33 @@
+Konversi Panjang:
+
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Program Konversi Satuan Panjang");
+        Console.WriteLine("");
+
+        Console.Write("Masukkan Nama Lengkap: ");
+        string nama = Console.ReadLine();
+        Console.Write("Masukkan NIM: ");
+        string nim = Console.ReadLine();
+
+
+        Console.Write("Masukkan panjang dalam meter: ");
+        double panjangMeter = double.Parse(Console.ReadLine());
+
+        // Pada bagian ini, Mengonversi panjang dari Kilometer ke Meter, Mil ke Kilometer, Inci ke Meter, dan Panjang kaki ke Meter.
+        double panjangKilometer = panjangMeter / 1000;
+        double panjangMil = panjangKilometer / 1.60934;
+        double panjangInci = panjangMeter * 39.3701;
+        double panjangKaki = panjangMeter * 3.28084;
+
+        
+        Console.WriteLine($"Panjang dalam kilometer: {panjangKilometer} km");
+        Console.WriteLine($"Panjang dalam mil: {panjangMil} mil");
+        Console.WriteLine($"Panjang dalam inci: {panjangInci} inci");
+        Console.WriteLine($"Panjang dalam kaki: {panjangKaki} kaki");
+    }
+}
