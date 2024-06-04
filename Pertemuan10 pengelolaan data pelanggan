@@ -1,0 +1,150 @@
+Tugas Terstruktur: (you did great karena sudah menjelaskan kode dan ga perlu kerjain tugas mandiri)
+Anda diminta untuk membuat sebuah program pengelolaan data pelanggan untuk suatu toko ritel. 
+Pengguna dapat melakukan beberapa operasi, termasuk menambahkan data pelanggan ke dalam list, 
+menghapus data pelanggan, mengurutkan data pelanggan berdasarkan nama, 
+mencari posisi indeks data pelanggan berdasarkan nomor ID, dan menampilkan seluruh data pelanggan.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class PelangganTokoSalwa
+{
+    public string Pelanggan { get; set; }
+    public string ID { get; set; }
+    public string Alamat { get; set; }
+    public string Instagram { get; set; }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<PelangganTokoSalwa> daftarPelanggan = new List<PelangganTokoSalwa>();
+
+        while (true)
+        {
+            DisplayMenu();
+            int menu = GetMenuChoice();
+
+            switch (menu)
+            {
+                case 1:
+                    TambahDataPelanggan(daftarPelanggan);
+                    break;
+                case 2:
+                    HapusDataPelanggan(daftarPelanggan);
+                    break;
+                case 3:
+                    UrutkanDataPelanggan(daftarPelanggan);
+                    break;
+                case 4:
+                    CariPosisiIdPelanggan(daftarPelanggan);
+                    break;
+                case 5:
+                    TampilkanSeluruhDataPelanggan(daftarPelanggan);
+                    break;
+                case 6:
+                    ExitProgram();
+                    break;
+                default:
+                    Console.WriteLine("Opsi yang kamu pilih salah, silakan diulangi");
+                    break;
+            }
+        }
+    }
+
+    static void DisplayMenu()
+    {
+        Console.WriteLine("\nMenu:");
+        Console.WriteLine("1. Tambah Data Pelanggan");
+        Console.WriteLine("2. Hapus Data Pelanggan");
+        Console.WriteLine("3. Urutkan Data Pelanggan berdasarkan Nama");
+        Console.WriteLine("4. Cari Posisi nomor Pelanggan berdasarkan ID");
+        Console.WriteLine("5. Tampilkan Seluruh Data Pelanggan");
+        Console.WriteLine("6. Keluar");
+        Console.Write("Pilih menu: ");
+    }
+
+    static int GetMenuChoice()
+    {
+        int menu;
+        while (!int.TryParse(Console.ReadLine(), out menu) || menu < 1 || menu > 6)
+        {
+            Console.WriteLine("Opsi kamu salah, silakan pilih diantara nomor 1-6 ya!");
+            Console.Write("Pilih menu: ");
+        }
+        return menu;
+    }
+
+    static void TambahDataPelanggan(List<PelangganTokoSalwa> list)
+    {
+        Console.WriteLine("\nTambah Data Pelanggan:");
+        Console.Write("ID: ");
+        string id = Console.ReadLine();
+        Console.Write("Pelanggan: ");
+        string pelanggan = Console.ReadLine();
+        Console.Write("Alamat: ");
+        string alamat = Console.ReadLine();
+        Console.Write("Instagram: ");
+        string instagram = Console.ReadLine();
+
+        list.Add(new PelangganTokoSalwa { ID = id, Pelanggan = pelanggan, Alamat = alamat, Instagram = instagram });
+        Console.WriteLine("Data pelanggan toko kamu berhasil ditambahkan.");
+    }
+
+    static void HapusDataPelanggan(List<PelangganTokoSalwa> list)
+    {
+        Console.WriteLine("\nHapus Data Pelanggan:");
+        Console.Write("Masukkan ID Pelanggan yang ingin dihapus: ");
+        string id = Console.ReadLine();
+
+        PelangganTokoSalwa pelanggan = list.FirstOrDefault(m => m.ID == id);
+        if (pelanggan != null)
+        {
+            list.Remove(pelanggan);
+            Console.WriteLine("Data pelanggan berhasil dihapus.");
+        }
+        else
+        {
+            Console.WriteLine("Data pelanggan tidak ditemukan.");
+        }
+    }
+
+    static void UrutkanDataPelanggan(List<PelangganTokoSalwa> list)
+    {
+        list.Sort((x, y) => x.Pelanggan.CompareTo(y.Pelanggan));
+        Console.WriteLine("\nData pelanggan kamu berhasil diurutkan berdasarkan nama.");
+    }
+
+    static void CariPosisiIdPelanggan(List<PelangganTokoSalwa> list)
+    {
+        Console.WriteLine("\nCari nomor Pelanggan berdasarkan ID:");
+        Console.Write("Masukkan ID pelanggan yang ingin dicari: ");
+        string id = Console.ReadLine();
+
+        int index = list.FindIndex(m => m.ID == id);
+        if (index != -1)
+        {
+            Console.WriteLine($"Pelanggan dengan ID {id} ditemukan pada nomor ke-{index + 1}.");
+        }
+        else
+        {
+            Console.WriteLine("Pelanggan tidak ditemukan.");
+        }
+    }
+
+    static void TampilkanSeluruhDataPelanggan(List<PelangganTokoSalwa> list)
+    {
+        Console.WriteLine("\nDataPelanggan:");
+        foreach (var pelanggan in list)
+        {
+            Console.WriteLine($"ID: {pelanggan.ID}, Pelanggan: {pelanggan.Pelanggan}, Alamat: {pelanggan.Alamat}, Instagram: {pelanggan.Instagram}");
+        }
+    }
+
+    static void ExitProgram()
+    {
+        Console.WriteLine("Terima kasih telah mengoperasikan Program toko kami!");
+    }
+}
