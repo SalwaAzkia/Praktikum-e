@@ -1,0 +1,159 @@
+Tugas Mandiri:
+Buatlah sebuah program dalam bahasa C# untuk mensimulasikan lampu lalu lintas menggunakan prosedur. 
+Program harus memungkinkan pengguna untuk menentukan durasi waktu (dalam detik) untuk masing-masing fase lampu, yaitu merah, kuning, dan hijau. 
+Setelah simulasi berjalan sebanyak jumlah iterasi yang ditentukan oleh pengguna, program harus berhenti dan menampilkan pesan bahwa simulasi telah selesai.
+
+using System;
+
+class LampuLaluLintas
+{
+    static void TampilkanLampu(string warna)
+    {
+        Console.WriteLine($"Lampu {warna} menyala");
+    }
+
+    static void Main(string[] args)
+    {
+        string nama, nim;
+        Console.Write("Masukkan Nama: ");
+        nama = Console.ReadLine();
+        Console.Write("Masukkan NIM: ");
+        nim = Console.ReadLine();
+
+        Console.Write("Durasi Merah (detik): ");
+        int merah = int.Parse(Console.ReadLine());
+        Console.Write("Durasi Kuning (detik): ");
+        int kuning = int.Parse(Console.ReadLine());
+        Console.Write("Durasi Hijau (detik): ");
+        int hijau = int.Parse(Console.ReadLine());
+        Console.Write("Jumlah Iterasi: ");
+        int iterasi = int.Parse(Console.ReadLine());
+
+        Console.WriteLine($"\nNama: {nama}");
+        Console.WriteLine($"NIM: {nim}");
+
+        for (int i = 0; i < iterasi; i++)
+        {
+            TampilkanLampu("Merah");
+            System.Threading.Thread.Sleep(merah * 1000);
+
+            TampilkanLampu("Kuning");
+            System.Threading.Thread.Sleep(kuning * 1000);
+
+            TampilkanLampu("Hijau");
+            System.Threading.Thread.Sleep(hijau * 1000);
+        }
+
+        Console.WriteLine("\nSimulasi selesai.");
+    }
+}
+
+Tugas Terstruktur:
+Andi ingin membuat program sederhana untuk mengelola data buku di perpustakaannya. 
+Bantulah Andi dengan membuat sebuah prosedur untuk menambahkan data buku baru dan menampilkan daftar buku yang sudah ada.
+
+Tugas:
+Buatlah sebuah program dalam bahasa pemrograman C# yang menggunakan prosedur untuk melakukan operasi-operasi berikut:
+Menambahkan data buku baru ke dalam daftar buku.
+Menampilkan daftar buku yang sudah ada.
+
+using System;
+using System.Collections.Generic;
+class Buku1
+{
+    struct Buku
+    {
+        public string Judul;
+        public string Penulis;
+        public int TahunTerbit;
+    }
+
+    static void TambahBuku(List<Buku> daftarBuku)
+    {
+        Console.WriteLine("Masukkan informasi buku baru:");
+        Console.Write("Judul: ");
+        string judul = Console.ReadLine();
+        Console.Write("Penulis: ");
+        string penulis = Console.ReadLine();
+        int tahunTerbit;
+        while (true)
+        {
+            Console.Write("Tahun Terbit: ");
+            if (int.TryParse(Console.ReadLine(), out tahunTerbit))
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Tahun terbit harus berupa angka. Silakan coba lagi.");
+            }
+        }
+
+        Buku bukuBaru = new Buku
+        {
+            Judul = judul,
+            Penulis = penulis,
+            TahunTerbit = tahunTerbit
+        };
+
+        daftarBuku.Add(bukuBaru);
+        Console.WriteLine("Buku baru berhasil ditambahkan ke dalam daftar.");
+    }
+
+    static void TampilkanDaftarBuku(List<Buku> daftarBuku)
+    {
+        Console.WriteLine("\nDaftar Buku:");
+        foreach (var buku in daftarBuku)
+        {
+            Console.WriteLine($"Judul: {buku.Judul}, Penulis: {buku.Penulis}, Tahun Terbit: {buku.TahunTerbit}");
+        }
+    }
+
+    static void Main(string[] args)
+    {
+        string nama = "Salwa Sayyidati Azkia";
+        string nim = "1237050005";
+        Console.WriteLine($"Nama: {nama}");
+        Console.WriteLine($"NIM: {nim}");
+
+        List<Buku> daftarBuku = new List<Buku>();
+
+        while (true)
+        {
+            Console.WriteLine("\nPilih operasi yang ingin dilakukan:");
+            Console.WriteLine("1. Tambahkan buku baru");
+            Console.WriteLine("2. Tampilkan daftar buku");
+            Console.WriteLine("3. Keluar");
+
+            Console.Write("Masukkan pilihan: ");
+            int pilihan;
+            while (true)
+            {
+                if (int.TryParse(Console.ReadLine(), out pilihan))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Pilihan haruslah Angka atau berupa Nomor, silakan coba kembali.");
+                }
+            }
+
+            switch (pilihan)
+            {
+                case 1:
+                    TambahBuku(daftarBuku);
+                    break;
+                case 2:
+                    TampilkanDaftarBuku(daftarBuku);
+                    break;
+                case 3:
+                    Console.WriteLine("Terima kasih!");
+                    return;
+                default:
+                    Console.WriteLine("Pilihan tidak valid. Silakan pilih kembali.");
+                    break;
+            }
+        }
+    }
+}
